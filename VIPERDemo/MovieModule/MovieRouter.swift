@@ -24,7 +24,9 @@ class MovieRouter{
         let interactor = MovieInteractor()
         let router = MovieRouter()
         //
-        view
+        view.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
     
         return view
 
