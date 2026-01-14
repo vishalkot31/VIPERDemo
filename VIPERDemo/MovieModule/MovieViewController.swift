@@ -11,27 +11,27 @@ import UIKit
 
 //Movie View Protocol
 
-protocol MoviewViewProtocl:AnyObject {
+protocol MoviewPresenterToViewProtocl:AnyObject {
     func showMovies(movies:[Movie])
     func showError(messgae:String)
 }
 
+//Flow from view to presenter
 class MovieViewController: UIViewController {
 
-    var presenter: MoviePresenterProtocol!
+    var presenter: MovieViewToPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        //It will ask presnter
+        //It will ask presnter to download movies
         presenter.ViewdidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 }
 
-extension MovieViewController:MoviewViewProtocl {
+//Get data from Presenter to show in view
+extension MovieViewController:MoviewPresenterToViewProtocl {
     func showMovies(movies: [Movie]) {
         print("Movies received in View:", movies)
     }

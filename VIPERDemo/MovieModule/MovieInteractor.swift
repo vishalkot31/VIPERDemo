@@ -7,18 +7,17 @@
 
 import Foundation
 //Buiness Logic
-//API calls/database operaions
+//API calls/database operaions all are in this
+
+//data is created here
 protocol MoviewInteractorProtocol {
     func fetchMovies()
 }
 
-protocol MovieIInteratcorOutputProtcol:AnyObject{
-    func didFtechMovies(movies:[Movie])
-}
-
 class MovieInteractor:MoviewInteractorProtocol {
     
-    weak var presenter:MovieIInteratcorOutputProtcol?
+    weak var presenter:MovieInteratToPresenterProtcol?
+    //It wil get the moveis from api or db or any
     func fetchMovies() {
         //Call api for fetch
         // Simulating API response
@@ -26,9 +25,10 @@ class MovieInteractor:MoviewInteractorProtocol {
                 Movie(id: 1, title: "Inception"),
                 Movie(id: 2, title: "Interstellar")
             ]
-        //after fetching movies will send movies to presenter
-            presenter?.didFtechMovies(movies: movies)
+        
+        //after fetching movies will send movies to presenter tht i ahve done my work
+        
+        presenter?.didFtechMovies(movie: movies)
     }
-    
     
 }

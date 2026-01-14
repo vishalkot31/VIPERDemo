@@ -11,24 +11,26 @@ import UIKit
 //Navigation
 //Dependency injection
 //Module creation
-protocol MovieRouteProtocol{
-    static func createModule()->UIViewController
+protocol MovieRouterProtocol{
+    func nvaigateToMovieDetail(movie:Movie)
 }
 
-
-class MovieRouter{
-    static func createModule()->UIViewController{
-        //Create object of VIPE
-        let view = MovieViewController()
-        let presenter = MoviePresenter()
-        let interactor = MovieInteractor()
-        let router = MovieRouter()
-        //
-        view.presenter = presenter
-        presenter.interactor = interactor
-        presenter.router = router
+//Builder is called inside router
+class MovieRouter:MovieRouterProtocol{
     
-        return view
-
+    //Acces to view
+    weak var viewController : UIViewController?
+    
+    //Create Movie Detail Screen
+    func nvaigateToMovieDetail(movie: Movie) {
+        //Call Builder of Movie Detail and create Object
+        
+        let movieDetailVC = MovieDetailViewVC()
+        //Navigation to view
+        viewController?.navigationController?
+            .pushViewController(movieDetailVC, animated: true)
+        
+        
     }
+
 }
